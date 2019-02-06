@@ -1,0 +1,12 @@
+en:
+  enumerations:
+    restriction_type:
+      ER: Executive records restricted
+      PR: Personnel records restricted
+      SR: Student records restricted
+      CR: Patient/client records restricted
+      Restricted: Restricted
+      Closed: Closed
+      ReadingRoom: Access to this material is restricted to the reading room of the Bentley Historical Library
+      Fragility: Due to its fragile nature, access to the original item is restricted
+      Other: Other (please specify)
