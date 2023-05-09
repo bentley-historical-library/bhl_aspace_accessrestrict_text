@@ -55,6 +55,28 @@ $(function() {
 
     $(document).bind("subrecordcreated.aspace", function(event, object_name, subform) {
         if (object_name === "note") {
+            // BEGIN: ArchivesSpace layout workaround
+            //
+            // ArchivesSpace has a bug that causes the local access restriction
+            // select box to be jammed up against the left margin.  It looks bad.
+            // Once that's fixed upstream the following workaround can be
+            // removed.
+
+            var $local_access_restriction_type = $("select[id*='_local_access_restriction_type_']", $(subform));
+            var $control = $local_access_restriction_type.closest('.control-group');
+
+            if ($control.parent().attr('id') === 'notes_restriction') {
+                // Add a form-group to fix the layout
+                var $group = $('<div class="form-group"><div class="col-sm-2 control-label"></div><div class="col-sm-4"></div></div>');
+                $group.insertBefore($control);
+
+                $group.find('.col-sm-4').append($control.find('.controls'))
+                $group.find('.col-sm-2').append($control.find('label'))
+
+                $group.find('.help-inline').css('display', 'block');
+            }
+            // END: ArchivesSpace layout workaround
+
             apply_accessrestrict_text($(subform));
         }
     });
