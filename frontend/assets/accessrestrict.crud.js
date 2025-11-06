@@ -63,7 +63,7 @@ $(function() {
     };
 
     $(document).bind("subrecordcreated.aspace", function(event, object_name, subform) {
-        //console.log("subrecordcreated.aspace: " + object_name);
+        console.log("subrecordcreated.aspace: " + object_name);
 
         if (object_name === "note") {
             // BEGIN: ArchivesSpace layout workaround
@@ -78,7 +78,7 @@ $(function() {
 
             if ($control.parent().attr('id') === 'notes_restriction') {
                 // Add a form-group to fix the layout
-                var $group = $('<div class="form-group"><div class="col-sm-2 control-label"></div><div class="col-sm-4"></div></div>');
+                var $group = $('<div class="form-group row"><div class="col-sm-2 control-label"></div><div class="col-sm-4"></div></div>');
                 $group.insertBefore($control);
 
                 $group.find('.col-sm-4').append($control.find('.controls'))
@@ -117,7 +117,7 @@ $(function() {
 
         if ($control.parent().attr('id') === 'notes_restriction') {
             // Add a form-group to fix the layout
-            var $group = $('<div class="form-group"><div class="col-sm-2 control-label"></div><div class="col-sm-4"></div></div>');
+            var $group = $('<div bhl-info="here" class="form-group row"><div class="col-sm-2 control-label"></div><div class="col-sm-4"></div></div>');
             $group.insertBefore($control);
 
             $group.find('.col-sm-4').append($control.find('.controls'))
